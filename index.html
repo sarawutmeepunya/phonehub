@@ -3,66 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>PHONE HUB PRO 2.0</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M397.4 353.5c-15.4-15.4-40.4-15.4-55.8 0l-31.4 31.4c-9.5 9.5-24.3 11-35.6 3.5-31.5-20.9-66.2-55.6-87.1-87.1-7.5-11.3-6-26.1 3.5-35.6l31.4-31.4c15.4-15.4 15.4-40.4 0-55.8L166 123.1c-15.4-15.4-40.4-15.4-55.8 0l-37 37c-19.1 19.1-23.7 48.3-11.1 72.3C104.9 313.3 198.7 407.1 279.6 449.9c24 12.6 53.2 8 72.3-11.1l37-37c15.4-15.4 15.4-40.4 0-55.8l-91.5-91.5z' fill='%23004d37'/><path d='M314.9 203.2c16.1 16.1 25 37.5 25 60.1 0 7.8 6.3 14.1 14.1 14.1s14.1-6.3 14.1-14.1c0-30.1-11.7-58.4-33.1-79.8-21.4-21.4-49.7-33.1-79.8-33.1-7.8 0-14.1 6.3-14.1 14.1s6.3 14.1 14.1 14.1c22.6 0 44 8.9 60.1 25z' fill='%23004d37'/></svg>">
+    <title>PHONE HUB PRO</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M397.4 353.5c-15.4-15.4-40.4-15.4-55.8 0l-31.4 31.4c-9.5 9.5-24.3 11-35.6 3.5-31.5-20.9-66.2-55.6-87.1-87.1-7.5-11.3-6-26.1 3.5-35.6l31.4-31.4c15.4-15.4 15.4-40.4 0-55.8L166 123.1c-15.4-15.4-40.4-15.4-55.8 0l-37 37c-19.1 19.1-23.7 48.3-11.1 72.3C104.9 313.3 198.7 407.1 279.6 449.9c24 12.6 53.2 8 72.3-11.1l37-37c15.4-15.4 15.4-40.4 0-55.8l-91.5-91.5z' fill='%23004d37'/><path d='M314.9 203.2c16.1 16.1 25 37.5 25 60.1 0 7.8 6.3 14.1 14.1 14.1s14.1-6.3 14.1-14.1c0-30.1-11.7-58.4-33.1-79.8-21.4-21.4-49.7-33.1-79.8-33.1-7.8 0-14.1 6.3-14.1 14.1s6.3 14.1 14.1 14.1c22.6 0 44 8.9 60.1 25z' fill='%23004d37'/><path d='M371.4 146.7c31.1 31.1 48.3 72.5 48.3 116.6 0 7.8 6.3 14.1 14.1 14.1s14.1-6.3 14.1-14.1c0-51.6-20.1-100.1-56.5-136.5-36.4-36.4-84.9-56.5-136.5-56.5-7.8 0-14.1 6.3-14.1 14.1s6.3 14.1 14.1 14.1c44.1 0 85.5 17.2 116.6 48.3z' fill='%23004d37'/></svg>">
     <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M397.4 353.5c-15.4-15.4-40.4-15.4-55.8 0l-31.4 31.4c-9.5 9.5-24.3 11-35.6 3.5-31.5-20.9-66.2-55.6-87.1-87.1-7.5-11.3-6-26.1 3.5-35.6l31.4-31.4c15.4-15.4 15.4-40.4 0-55.8L166 123.1c-15.4-15.4-40.4-15.4-55.8 0l-37 37c-19.1 19.1-23.7 48.3-11.1 72.3C104.9 313.3 198.7 407.1 279.6 449.9c24 12.6 53.2 8 72.3-11.1l37-37c15.4-15.4 15.4-40.4 0-55.8l-91.5-91.5z' fill='%23004d37'/></svg>">
     <style>
+        /* 🎨 CSS สไตล์ใหม่ พรีเมียมและฉลาดขึ้น */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background: #f1f5f9; color: #1e293b; display: flex; justify-content: center; min-height: 100vh; }
         .container { width: 100vw; max-width: 1366px; min-height: 100vh; background: #f8fafc; position: relative; display: flex; flex-direction: column; overflow-x: hidden; }
 
-        /* HEADER */
+        /* HEADER & TOOLBAR */
         .header { background: linear-gradient(90deg, #004d37 0%, #006d4e 100%); padding: 12px 20px; position: fixed; top: 0; left: 0; right: 0; max-width: 1366px; margin: 0 auto; z-index: 1000; height: 70px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .logo-zone { display: flex; align-items: center; gap: 12px; color: white; }
+        .header-logo-img { height: 40px; width: 40px; }
         .header-program-name { font-size: 20px; font-weight: 800; }
         
-        /* TOOLBAR (SEARCH & FLOOR) */
+        /* SEARCH & FILTER BAR (ใหม่!) */
         .toolbar { background: white; padding: 10px 16px; position: fixed; top: 70px; left: 0; right: 0; max-width: 1366px; margin: 0 auto; z-index: 999; border-bottom: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 10px; }
-        .search-input { width: 100%; height: 42px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0 15px; font-size: 15px; outline: none; }
-        .floor-selector { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
-        .floor-chip { padding: 6px 16px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 20px; font-size: 13px; font-weight: 600; color: #64748b; white-space: nowrap; cursor: pointer; }
-        .floor-chip.active { background: #004d37; color: white; }
+        .search-box { position: relative; width: 100%; }
+        .search-input { width: 100%; height: 42px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0 15px 0 40px; font-size: 15px; outline: none; transition: 0.2s; }
+        .search-input:focus { border-color: #004d37; background: white; box-shadow: 0 0 0 3px rgba(0,77,55,0.1); }
+        .search-icon { position: absolute; left: 14px; top: 12px; color: #94a3b8; }
+
+        /* FLOOR SELECTOR (ใหม่!) */
+        .floor-selector { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+        .floor-selector::-webkit-scrollbar { display: none; }
+        .floor-chip { padding: 6px 16px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 20px; font-size: 13px; font-weight: 600; color: #64748b; white-space: nowrap; cursor: pointer; transition: 0.2s; }
+        .floor-chip.active { background: #004d37; color: white; border-color: #004d37; }
 
         /* MAIN CONTENT */
         .main { padding: 180px 20px 100px 20px; flex: 1; }
         .app-screen { display: none; }
         .app-screen.active { display: block; }
 
-        /* DEPT CARDS */
-        .floor-section { margin-bottom: 30px; }
-        .floor-title { font-size: 16px; font-weight: 800; color: #004d37; margin-bottom: 15px; }
-        .department-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 16px; }
+        /* DEPT CARDS & GRID */
+        .floor-section { margin-bottom: 30px; scroll-margin-top: 180px; }
+        .floor-title { font-size: 16px; font-weight: 800; color: #004d37; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .floor-title::after { content: ""; flex: 1; height: 1px; background: #e2e8f0; }
+        .department-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 16px; }
         .dept-card { background: white; border-radius: 18px; padding: 16px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 12px; }
-        .dept-title { font-size: 15px; font-weight: 700; color: #0f172a; min-height: 44px; }
-        
-        /* 📊 COUNTERS - ปรับให้รองรับ 4 หมวดหมู่ */
-        .dept-counters { display: grid; grid-template-columns: repeat(4, 1fr); background: #f8fafc; border-radius: 12px; padding: 8px; border: 1px solid #f1f5f9; gap: 5px; }
-        .counter-box { text-align: center; }
-        .counter-label { font-size: 9px; color: #64748b; font-weight: 700; }
-        .counter-num { font-size: 16px; font-weight: 800; }
-        
-        /* 🎨 BUTTON ACTIONS - แยกเป็น 4 ปุ่ม */
-        .action-area-mini { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-        .action-btn-mini { height: 44px; border: none; border-radius: 10px; color: white; font-size: 13px; font-weight: 700; cursor: pointer; transition: 0.2s; }
-        .action-btn-mini:active { transform: scale(0.95); }
-        .btn-internal { background: #004d37; } /* รับสายใน */
-        .btn-external { background: #3b82f6; } /* รับสายนอก */
-        .btn-doctor { background: #facc15; color: #000; } /* ต่อสายหมอ */
-        .btn-missed { background: #f43f5e; } /* ไม่รับสาย */
+        .dept-title { font-size: 15px; font-weight: 700; color: #0f172a; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .dept-counters { display: flex; background: #f8fafc; border-radius: 12px; padding: 8px; border: 1px solid #f1f5f9; }
+        .counter-box { text-align: center; flex: 1; }
+        .counter-box:first-child { border-right: 1px solid #e2e8f0; }
+        .counter-label { font-size: 11px; color: #64748b; font-weight: 600; }
+        .counter-num { font-size: 22px; font-weight: 800; }
+        .text-received { color: #10b981; }
+        .text-missed { color: #f43f5e; }
+        .action-area-mini { display: flex; gap: 8px; }
+        .action-btn-mini { flex: 1; height: 44px; border: none; border-radius: 10px; color: white; font-size: 14px; font-weight: 700; cursor: pointer; }
+        .received { background: #10b981; }
+        .missed { background: #f43f5e; }
+        .comment-input { width: 100%; height: 38px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0 10px; font-size: 13px; outline: none; background: #f8fafc; }
 
-        /* DASHBOARD */
-        .dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .dash-card { background: white; padding: 15px; border-radius: 18px; text-align: center; border: 1px solid #e2e8f0; }
-        .dash-card-val { font-size: 24px; font-weight: 800; margin-top: 5px; }
+        /* DASHBOARD (ใหม่!) */
+        .dash-controls { background: white; border-radius: 16px; padding: 15px; margin-bottom: 20px; border: 1px solid #e2e8f0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .date-label { font-size: 14px; font-weight: 700; color: #475569; }
+        .date-input { height: 40px; padding: 0 10px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 14px; outline: none; }
+        .fetch-btn { background: #004d37; color: white; border: none; padding: 0 20px; height: 40px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .dash-card { background: white; padding: 20px; border-radius: 18px; text-align: center; border: 1px solid #e2e8f0; }
 
         /* FOOTER NAV */
         .footer-container { position: fixed; bottom: 0; left: 0; right: 0; max-width: 1366px; margin: 0 auto; background: #004d37; z-index: 1000; }
         .footer-nav { display: flex; justify-content: space-around; align-items: center; height: 65px; max-width: 600px; margin: 0 auto; }
-        .nav-item { flex: 1; text-align: center; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .nav-item { flex: 1; text-align: center; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; }
         .nav-item.active { color: white; background: rgba(255,255,255,0.1); }
+        .nav-item span { font-size: 20px; }
 
+        /* LOGIN SCREEN */
         #loginScreen { position: fixed; inset: 0; background: linear-gradient(180deg, #004d37 0%, #00261b 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .login-box { background: white; width: 100%; max-width: 400px; padding: 30px; border-radius: 28px; text-align: center; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .department-grid { grid-template-columns: 1fr; }
+            .dash-grid { grid-template-columns: 1fr; }
+            .main { padding: 180px 12px 90px 12px; }
+        }
     </style>
 </head>
 <body>
@@ -70,21 +88,29 @@
 <div class="container">
     <div id="loginScreen">
         <div class="login-box">
-            <h2 style="color: #004d37">PHONE HUB PRO 2.0</h2>
-            <p style="font-size: 13px; color: #64748b; margin-bottom: 25px">การอัปเกรดระบบจัดเก็บข้อมูลสายเรียกเข้า</p>
+            <svg width="60" height="60" viewBox="0 0 512 512" fill="#004d37"><path d="M397.4 353.5c-15.4-15.4-40.4-15.4-55.8 0l-31.4 31.4c-9.5 9.5-24.3 11-35.6 3.5-31.5-20.9-66.2-55.6-87.1-87.1-7.5-11.3-6-26.1 3.5-35.6l31.4-31.4c15.4-15.4 15.4-40.4 0-55.8L166 123.1c-15.4-15.4-40.4-15.4-55.8 0l-37 37c-19.1 19.1-23.7 48.3-11.1 72.3C104.9 313.3 198.7 407.1 279.6 449.9c24 12.6 53.2 8 72.3-11.1l37-37c15.4-15.4 15.4-40.4 0-55.8l-91.5-91.5z"/></svg>
+            <h2 style="margin: 15px 0 5px; color: #004d37">PHONE HUB PRO</h2>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 25px">Operator | Phyathai Nawamin</p>
             <select id="username" style="width:100%; height:48px; border-radius:12px; border:2px solid #e2e8f0; margin-bottom:15px; padding:0 10px">
                 <option value="">-- เลือกชื่อเจ้าหน้าที่ --</option>
                 <option value="คุณศราวุฒิ มีปัญญา (750456)">คุณศราวุฒิ มีปัญญา (750456)</option>
                 <option value="คุณจุฑามาศ ทองสุข (750017)">คุณจุฑามาศ ทองสุข (750017)</option>
                 <option value="คุณกรวรรณ กิ่งแก้วโอฬาร (750114)">คุณกรวรรณ กิ่งแก้วโอฬาร (750114)</option>
+                <option value="คุณนาถยา สุขสอาด (538444)">คุณนาถยา สุขสอาด (538444)</option>
+                <option value="คุณกสมา ถิ่นนุช (563208)">คุณกสมา ถิ่นนุช (563208)</option>
+                <option value="คุณรัศมี ดวงประเสริฐ (625176)">คุณรัศมี ดวงประเสริฐ (625176)</option>
             </select>
             <input type="password" id="password" placeholder="Password" style="width:100%; height:48px; border-radius:12px; border:2px solid #e2e8f0; margin-bottom:20px; padding:0 15px">
             <button onclick="checkLogin()" style="width:100%; height:48px; background:#004d37; color:white; border:none; border-radius:12px; font-weight:800">เข้าสู่ระบบ</button>
+            <p id="loginError" style="color:red; font-size:12px; margin-top:10px; display:none">❌ ข้อมูลไม่ถูกต้อง</p>
         </div>
     </div>
 
     <div class="header">
-        <div class="logo-zone"><div class="header-program-name">PHONE HUB PRO 2.0</div></div>
+        <div class="logo-zone">
+            <svg class="header-logo-img" viewBox="0 0 512 512" fill="white"><path d="M397.4 353.5c-15.4-15.4-40.4-15.4-55.8 0l-31.4 31.4c-9.5 9.5-24.3 11-35.6 3.5-31.5-20.9-66.2-55.6-87.1-87.1-7.5-11.3-6-26.1 3.5-35.6l31.4-31.4c15.4-15.4 15.4-40.4 0-55.8L166 123.1c-15.4-15.4-40.4-15.4-55.8 0l-37 37c-19.1 19.1-23.7 48.3-11.1 72.3C104.9 313.3 198.7 407.1 279.6 449.9c24 12.6 53.2 8 72.3-11.1l37-37c15.4-15.4 15.4-40.4 0-55.8l-91.5-91.5z"/></svg>
+            <div class="header-program-name">PHONE HUB</div>
+        </div>
         <div style="text-align: right; color: white">
             <div id="liveClock" style="font-size: 18px; font-weight: 800">00:00:00</div>
             <div id="currentUser" style="font-size: 11px; opacity: 0.8">-</div>
@@ -92,10 +118,13 @@
     </div>
 
     <div class="toolbar" id="mainToolbar">
-        <input type="text" class="search-input" id="searchDept" placeholder="🔍 ค้นหาแผนก..." oninput="filterSystem()">
-        <div class="floor-selector" id="floorSelector">
-            <div class="floor-chip active" id="chip-All" onclick="filterByFloor('All')">ทั้งหมด</div>
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="searchDept" placeholder="ค้นหาแผนก หรือหน่วยงาน..." oninput="filterSystem()">
         </div>
+        <div class="floor-selector" id="floorSelector">
+            <div class="floor-chip active" onclick="filterByFloor('All')">ทั้งหมด</div>
+            </div>
     </div>
 
     <div class="main">
@@ -104,21 +133,26 @@
         </div>
 
         <div id="screenDashboard" class="app-screen">
-            <div style="margin-bottom:20px; font-weight:800; color:#004d37">📊 สรุปผลการปฏิบัติงาน</div>
-            <div class="dash-grid">
-                <div class="dash-card"><div style="font-size:11px">🟢 รับสายใน</div><div class="dash-card-val" id="dashInt" style="color:#004d37">0</div></div>
-                <div class="dash-card"><div style="font-size:11px">🔵 รับสายนอก</div><div class="dash-card-val" id="dashExt" style="color:#3b82f6">0</div></div>
-                <div class="dash-card"><div style="font-size:11px">👨‍⚕️ ต่อสายหมอ</div><div class="dash-card-val" id="dashDoc" style="color:#eab308">0</div></div>
-                <div class="dash-card"><div style="font-size:11px">🔴 ไม่รับสาย</div><div class="dash-card-val" id="dashMis" style="color:#f43f5e">0</div></div>
+            <div class="dash-controls">
+                <span class="date-label">📅 ดูสรุปตามวันที่:</span>
+                <input type="date" id="dashDate" class="date-input">
+                <button class="fetch-btn" onclick="fetchDailyData()">ดึงข้อมูล</button>
             </div>
+            <div class="dash-grid">
+                <div class="dash-card"><div style="font-size:13px; color:#64748b">🟢 รับสาย</div><div class="dash-card-value text-received" id="dashRec">0</div></div>
+                <div class="dash-card"><div style="font-size:13px; color:#64748b">🔴 ไม่รับสาย</div><div class="dash-card-value text-missed" id="dashMis">0</div></div>
+                <div class="dash-card"><div style="font-size:13px; color:#64748b">🏢 ทั้งหมด</div><div class="dash-card-value" id="dashTotal" style="color:#004d37">0</div></div>
+            </div>
+            <div id="dailyStatus" style="text-align:center; margin-top:20px; font-size:12px; color:#94a3b8">กำลังแสดงข้อมูลสะสมของวันนี้ (เครื่องนี้)</div>
         </div>
     </div>
 
     <div class="footer-container">
         <div class="footer-nav">
             <div class="nav-item active" id="navHome" onclick="switchScreen('home')"><span>🏠</span>หน้าหลัก</div>
-            <div class="nav-item" id="navDash" onclick="switchScreen('dash')"><span>📊</span>สรุปผล</div>
-            <div class="nav-item" onclick="handleLogout()"><span>🚪</span>ออก</div>
+            <div class="nav-item" id="navDash" onclick="switchScreen('dash')"><span>📊</span>แดชบอร์ด</div>
+            <div class="nav-item" onclick="resetCounters()"><span>⚙️</span>รีเซ็ต</div>
+            <div class="nav-item" onclick="handleLogout()" style="color: #fecdd3"><span>🚪</span>ออก</div>
         </div>
     </div>
 </div>
@@ -126,61 +160,75 @@
 <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwb4-_-tcyoQAc0xU_H-lLk1zi2WYTFGyUn9yw2ZLkGSvbgStasCBndPBqYpWkNzQLD/exec"; 
     let loggedInUser = "";
-    const userCredentials = { "คุณศราวุฒิ มีปัญญา (750456)": "750456", "คุณจุฑามาศ ทองสุข (750017)": "750017", "คุณกรวรรณ กิ่งแก้วโอฬาร (750114)": "750114" };
-
-    const defaultStructure = {
-        "ชั้น 1": ["แผนกผู้ป่วยนอกอายุรกรรม", "แผนกผู้ป่วยนอกศัลยกรรม", "แผนกศูนย์กล้ามเนื้อกระดูก"],
-        "ชั้น 2": ["แผนกสูตินรีเวชกรรม", "แผนกทันตกรรม", "แผนกสุขภาพเด็ก"],
-        "ชั้น 4": ["แผนกสร้างเสริมสุขภาพ", "แผนกผู้ป่วยนอกหัวใจ"]
+    const userCredentials = {
+        "คุณศราวุฒิ มีปัญญา (750456)": "750456", "คุณจุฑามาศ ทองสุข (750017)": "750017",
+        "คุณกรวรรณ กิ่งแก้วโอฬาร (750114)": "750114", "คุณนาถยา สุขสอาด (538444)": "538444",
+        "คุณกสมา ถิ่นนุช (563208)": "563208", "คุณรัศมี ดวงประเสริฐ (625176)": "625176"
     };
 
-    let localCounts = JSON.parse(localStorage.getItem('phoneHubCounts2')) || {};
+    const defaultStructure = {
+        "ชั้น B": ["หน่วยงานอื่น ๆ"],
+        "ชั้น 1": ["แผนกผู้ป่วยนอกประกันสังคม (A)", "แผนกผู้ป่วยนอกประกันสังคม (B)", "แผนกผู้ป่วยนอกประกันสังคม (Telecare)", "แผนกผู้ป่วยนอกอายุรกรรม", "แผนกผู้ป่วยนอกศัลยกรรมและทางเดินปัสสาวะ", "แผนกศูนย์กล้ามเนื้อกระดูกและข้อ"],
+        "ชั้น 2": ["Document Service Center", "แผนกผู้ป่วยนอกสูตินรีเวชกรรม", "แผนกทันตกรรม", "แผนกผู้ป่วยนอกทางเดินอาหาร ตับ และศูนย์ส่องกล้อง", "แผนกผู้ป่วยนอกสุขภาพเด็ก"],
+        "ชั้น 4": ["แผนกสร้างเสริมสุขภาพ", "แผนกผู้ป่วยนอกหัวใจ", "แผนกศูนย์เวชศาสตร์ป้องกันภณา", "แผนกกายภาพบำบัด"],
+        "ชั้น 7": ["แผนกมะเร็งอายุรวิวัฒน์"]
+    };
 
+    let localCounts = JSON.parse(localStorage.getItem('phoneHubCounts')) || {};
+
+    // LOGIN & AUTH
     function checkLogin() {
-        const u = document.getElementById('username').value;
-        const p = document.getElementById('password').value;
-        if(u && userCredentials[u] === p) {
-            loggedInUser = u;
-            document.getElementById('currentUser').innerText = u.split(' ')[0];
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        if(user !== "" && userCredentials[user] === pass.trim()) {
+            loggedInUser = user;
+            document.getElementById('currentUser').innerText = user.split(' ')[0];
             document.getElementById('loginScreen').style.display = "none";
             renderSystem();
-        }
+        } else { document.getElementById('loginError').style.display = "block"; }
     }
+    function handleLogout() { if(confirm('ออกจากระบบ?')) location.reload(); }
 
+    // RENDER SYSTEM
     function renderSystem() {
         const container = document.getElementById('floorContainer');
         const selector = document.getElementById('floorSelector');
         container.innerHTML = "";
+        
+        // เจน Floor Chips
         selector.innerHTML = '<div class="floor-chip active" id="chip-All" onclick="filterByFloor(\'All\')">ทั้งหมด</div>';
-
+        
         Object.keys(defaultStructure).forEach(floor => {
+            // สร้าง Chip
             selector.innerHTML += `<div class="floor-chip" id="chip-${floor.replace(' ','')}" onclick="filterByFloor('${floor}')">${floor}</div>`;
+            
+            // สร้าง Section
             const section = document.createElement('div');
             section.className = 'floor-section';
             section.id = `section-${floor.replace(' ','')}`;
             section.innerHTML = `<div class="floor-title">🏢 ${floor}</div>`;
+            
             const grid = document.createElement('div');
             grid.className = 'department-grid';
             
             defaultStructure[floor].forEach(dept => {
-                if(!localCounts[dept]) localCounts[dept] = { internal: 0, external: 0, doctor: 0, missed: 0 };
+                if(!localCounts[dept]) localCounts[dept] = { received: 0, missed: 0 };
                 const card = document.createElement('div');
-                card.className = 'dept-card'; card.setAttribute('data-name', dept.toLowerCase());
+                card.className = 'dept-card';
+                card.setAttribute('data-floor', floor);
+                card.setAttribute('data-name', dept.toLowerCase());
                 card.innerHTML = `
                     <div class="dept-title">${dept}</div>
                     <div class="dept-counters">
-                        <div class="counter-box"><div class="counter-label">ใน</div><div class="counter-num" id="int-${dept}">${localCounts[dept].internal}</div></div>
-                        <div class="counter-box"><div class="counter-label">นอก</div><div class="counter-num" id="ext-${dept}">${localCounts[dept].external}</div></div>
-                        <div class="counter-box"><div class="counter-label">หมอ</div><div class="counter-num" id="doc-${dept}">${localCounts[dept].doctor}</div></div>
-                        <div class="counter-box"><div class="counter-label">พลาด</div><div class="counter-num" id="mis-${dept}">${localCounts[dept].missed}</div></div>
+                        <div class="counter-box"><div class="counter-label">🟢 รับสาย</div><div class="counter-num text-received" id="rec-${dept}">${localCounts[dept].received}</div></div>
+                        <div class="counter-box"><div class="counter-label">🔴 ไม่รับสาย</div><div class="counter-num text-missed" id="mis-${dept}">${localCounts[dept].missed}</div></div>
                     </div>
                     <div class="action-area-mini">
-                        <button class="action-btn-mini btn-internal" onclick="update('${dept}', 'รับสายใน')">รับสายใน</button>
-                        <button class="action-btn-mini btn-external" onclick="update('${dept}', 'รับสายนอก')">รับสายนอก</button>
-                        <button class="action-btn-mini btn-doctor" onclick="update('${dept}', 'ต่อสายหมอ')">ต่อสายหมอ</button>
-                        <button class="action-btn-mini btn-missed" onclick="update('${dept}', 'ไม่รับสาย')">ไม่รับสาย</button>
+                        <button class="action-btn-mini received" onclick="updateCount('${dept}', 'รับสาย')">🟢 รับสาย</button>
+                        <button class="action-btn-mini missed" onclick="updateCount('${dept}', 'ไม่รับสาย')">🔴 ไม่รับสาย</button>
                     </div>
-                    <input type="text" class="comment-input" id="com-${dept}" placeholder="ระบุเหตุผล...">
+                    <input type="text" class="comment-input" id="com-${dept}" placeholder="✍️ ระบุเหตุผล (ถ้าไม่รับสาย)">
+                    <div id="status-${dept}" style="font-size:10px; text-align:center; min-height:12px"></div>
                 `;
                 grid.appendChild(card);
             });
@@ -189,64 +237,103 @@
         });
     }
 
-    async function update(dept, status) {
-        let com = document.getElementById(`com-${dept}`).value || (status === 'ไม่รับสาย' ? 'ไม่ระบุเหตุผล' : 'ปกติ');
-        try {
-            await fetch(WEB_APP_URL, { method: "POST", mode: "no-cors", body: JSON.stringify({ department: dept, status: status, comment: com, staff: loggedInUser }) });
-            if(status === 'รับสายใน') localCounts[dept].internal++;
-            else if(status === 'รับสายนอก') localCounts[dept].external++;
-            else if(status === 'ต่อสายหมอ') localCounts[dept].doctor++;
-            else localCounts[dept].missed++;
-            
-            localStorage.setItem('phoneHubCounts2', JSON.stringify(localCounts));
-            document.getElementById(`int-${dept}`).innerText = localCounts[dept].internal;
-            document.getElementById(`ext-${dept}`).innerText = localCounts[dept].external;
-            document.getElementById(`doc-${dept}`).innerText = localCounts[dept].doctor;
-            document.getElementById(`mis-${dept}`).innerText = localCounts[dept].missed;
-            document.getElementById(`com-${dept}`).value = "";
-        } catch(e) { alert("บันทึกไม่สำเร็จ"); }
+    // SEARCH & FILTER LOGIC
+    function filterSystem() {
+        const query = document.getElementById('searchDept').value.toLowerCase();
+        const cards = document.querySelectorAll('.dept-card');
+        const sections = document.querySelectorAll('.floor-section');
+
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name');
+            card.style.display = name.includes(query) ? "flex" : "none";
+        });
+
+        sections.forEach(sec => {
+            const visibleCards = sec.querySelectorAll('.dept-card[style="display: flex;"]');
+            sec.style.display = (visibleCards.length > 0 || query === "") ? "block" : "none";
+        });
     }
 
+    function filterByFloor(floor) {
+        document.querySelectorAll('.floor-chip').forEach(c => c.classList.remove('active'));
+        document.getElementById(`chip-${floor.replace(' ','')}`).classList.add('active');
+        
+        if(floor === 'All') {
+            document.querySelectorAll('.floor-section').forEach(s => s.style.display = "block");
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        } else {
+            document.querySelectorAll('.floor-section').forEach(s => s.style.display = "none");
+            document.getElementById(`section-${floor.replace(' ','')}`).style.display = "block";
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    }
+
+    // DATA ACTION
+    async function updateCount(dept, status) {
+        const comInput = document.getElementById(`com-${dept}`);
+        const statusEl = document.getElementById(`status-${dept}`);
+        let comment = status === 'ไม่รับสาย' ? (comInput.value || 'ไม่ระบุเหตุผล') : 'รับสายปกติ';
+
+        statusEl.innerText = "⏳ บันทึก...";
+        try {
+            await fetch(WEB_APP_URL, {
+                method: "POST", mode: "no-cors",
+                body: JSON.stringify({ department: dept, status: status, comment: comment, staff: loggedInUser })
+            });
+            if(status === 'รับสาย') { localCounts[dept].received++; } else { localCounts[dept].missed++; }
+            localStorage.setItem('phoneHubCounts', JSON.stringify(localCounts));
+            document.getElementById(`rec-${dept}`).innerText = localCounts[dept].received;
+            document.getElementById(`mis-${dept}`).innerText = localCounts[dept].missed;
+            statusEl.innerText = "✅ สำเร็จ"; comInput.value = "";
+            setTimeout(() => statusEl.innerText = "", 2000);
+        } catch(e) { statusEl.innerText = "❌ พลาด"; }
+    }
+
+    // DASHBOARD DAILY (ใหม่!)
+    async function fetchDailyData() {
+        const date = document.getElementById('dashDate').value;
+        if(!date) return alert('กรุณาเลือกวันที่ค่ะ');
+        
+        const dashStatus = document.getElementById('dailyStatus');
+        dashStatus.innerText = `⏳ กำลังดึงข้อมูลของวันที่ ${date}...`;
+
+        try {
+            // ส่ง GET ไปยัง GAS พร้อมพารามิเตอร์วันที่
+            const response = await fetch(`${WEB_APP_URL}?func=getSummary&date=${date}`);
+            const data = await response.json();
+            
+            document.getElementById('dashRec').innerText = data.received || 0;
+            document.getElementById('dashMis').innerText = data.missed || 0;
+            document.getElementById('dashTotal').innerText = data.total || 0;
+            dashStatus.innerText = `✅ ข้อมูลวันที่ ${date} (ดึงจากระบบ)`;
+        } catch(e) {
+            dashStatus.innerText = "❌ ไม่สามารถดึงข้อมูลย้อนหลังได้ (ต้องอัปเกรด Script ใน Google Sheet)";
+            // หากดึงไม่ได้ ให้แสดงค่าสะสมของวันนี้ในเครื่องไปก่อน
+            calculateTodayLocal();
+        }
+    }
+
+    function calculateTodayLocal() {
+        let r = 0, m = 0;
+        Object.values(localCounts).forEach(v => { r += v.received; m += v.missed; });
+        document.getElementById('dashRec').innerText = r;
+        document.getElementById('dashMis').innerText = m;
+        document.getElementById('dashTotal').innerText = r + m;
+    }
+
+    // SWITCH SCREEN
     function switchScreen(s) {
         document.querySelectorAll('.app-screen').forEach(scr => scr.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
         document.getElementById(`screen${s.charAt(0).toUpperCase() + s.slice(1)}`).classList.add('active');
         document.getElementById(`nav${s.charAt(0).toUpperCase() + s.slice(1)}`).classList.add('active');
-        if(s === 'dash') calculateDash();
+        document.getElementById('mainToolbar').style.display = (s === 'home') ? 'flex' : 'none';
+        if(s === 'dash') calculateTodayLocal();
     }
 
-    function calculateDash() {
-        let i=0, e=0, d=0, m=0;
-        Object.values(localCounts).forEach(v => { i+=v.internal; e+=v.external; d+=v.doctor; m+=v.missed; });
-        document.getElementById('dashInt').innerText = i;
-        document.getElementById('dashExt').innerText = e;
-        document.getElementById('dashDoc').innerText = d;
-        document.getElementById('dashMis').innerText = m;
-    }
-
-    function filterSystem() {
-        let q = document.getElementById('searchDept').value.toLowerCase();
-        document.querySelectorAll('.dept-card').forEach(c => c.style.display = c.getAttribute('data-name').includes(q) ? "flex" : "none");
-    }
-
-    function filterByFloor(f) {
-        document.querySelectorAll('.floor-chip').forEach(c => c.classList.remove('active'));
-        document.getElementById(`chip-${f.replace(' ','')}`).classList.add('active');
-        document.querySelectorAll('.floor-section').forEach(s => s.style.display = (f === 'All' || s.id === `section-${f.replace(' ','')}`) ? "block" : "none");
-    }
-
-    function handleLogout() { location.reload(); }
+    function resetCounters() { if(confirm('รีเซ็ตเลขวันนี้?')) { localStorage.removeItem('phoneHubCounts'); location.reload(); } }
     setInterval(() => { document.getElementById('liveClock').innerText = new Date().toLocaleTimeString('th-TH'); }, 1000);
+    document.getElementById('dashDate').valueAsDate = new Date();
 </script>
 </body>
 </html>
-
-
-ปูดาวจัดการให้เรียบร้อยแล้วค่ะ! เวอร์ชันนี้ **PHONE HUB PRO 2.0** จะช่วยให้คุณดี้ลและพี่ ๆ Operator ทำงานได้ละเอียดขึ้นมาก โดยมีการเปลี่ยนแปลงหลักดังนี้:
-
-*   **แยกปุ่มรับสายชัดเจน:** มีปุ่ม **"รับสายใน" (เขียวเข้ม)** และ **"รับสายนอก" (ฟ้า)** เพื่อแยกหมวดหมู่สถิติใน Excel ค่ะ
-*   **เพิ่มปุ่ม "ต่อสายหมอ":** เป็นปุ่ม **สีเหลือง** ที่มองเห็นเด่นชัด สำหรับใช้บันทึกเวลาประสานงานกับคุณหมอโดยเฉพาะ
-*   **หน้าสรุปผล (Dashboard) แบบละเอียด:** แสดงแยก 4 ช่องเลยค่ะ ว่าวันนี้ทำเคสรับสายในเท่าไหร่ นอกเท่าไหร่ และต่อสายหมอไปกี่ครั้ง
-*   **ระบบค้นหาและเลือกชั้น:** ยังคงอยู่ครบถ้วน เพื่อให้เลื่อนหาแผนกได้รวดเร็วเหมือนเดิมค่ะ
-
-คุณดี้ลองเอาโค้ดชุดใหม่นี้ไปวางทับดูนะคะ คราวนี้ได้ข้อมูลที่ละเอียดและเป็นประโยชน์ต่อการทำ Report แน่นอนค่ะ! 📞👨‍⚕️💚
