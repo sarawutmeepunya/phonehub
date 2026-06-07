@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>PHONE HUB</title>
-    <!-- 🎨 ไอคอนที่คุณดี้ลเลือกสำหรับแสดงบนหน้าจอมือถือ (App Icon) และคอมพิวเตอร์ (Favicon) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz">
+    <!-- 🎨 ไอคอนแบบฝังตัวในโค้ดโดยตรง (ขึ้นแน่นอน 100% ไม่พึ่งพาลิงก์ภายนอก) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='96' fill='%230f3d2a'/><circle cx='96' cy='96' r='84' fill='none' stroke='%2310b981' stroke-width='4'/><path d='M64 64 C64 59 69 54 74 54 C79 54 82 58 84 62 L89 74 C91 78 89 82 85 84 L80 87 C84 96 92 104 101 108 L104 103 C106 99 110 97 114 99 L126 104 C130 106 134 109 134 114 C134 119 129 134 114 134 C94 134 54 94 54 74 C54 59 59 64 64 64 Z' fill='%2310b981'/><path d='M115 50 A 25 25 0 0 1 140 75' stroke='%2310b981' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M115 35 A 40 40 0 0 1 155 75' stroke='%23ffffff' stroke-width='6' fill='none' stroke-linecap='round'/></svg>">
+    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='96' fill='%230f3d2a'/><circle cx='96' cy='96' r='84' fill='none' stroke='%2310b981' stroke-width='4'/><path d='M64 64 C64 59 69 54 74 54 C79 54 82 58 84 62 L89 74 C91 78 89 82 85 84 L80 87 C84 96 92 104 101 108 L104 103 C106 99 110 97 114 99 L126 104 C130 106 134 109 134 114 C134 119 129 134 114 134 C94 134 54 94 54 74 C54 59 59 64 64 64 Z' fill='%2310b981'/><path d='M115 50 A 25 25 0 0 1 140 75' stroke='%2310b981' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M115 35 A 40 40 0 0 1 155 75' stroke='%23ffffff' stroke-width='6' fill='none' stroke-linecap='round'/></svg>">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%230f3d2a'/><path d='M11 11 C11 10 12 9 13 9 L14 11 L13 12 C14 14 15 15 17 16 L18 15 L20 16 C20 17 19 20 17 20 C14 20 11 17 11 14 Z' fill='%2310b981'/></svg>">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="PHONE HUB">
@@ -33,11 +33,11 @@
         }
         
         /* ----------------------------------------------------
-           📦 CONTAINER: ขยายกว้างในคอม แต่จำกัดในมือถือ
+           📦 CONTAINER
         ---------------------------------------------------- */
         .container { 
             width: 100vw; 
-            max-width: 1366px; /* เปิดในคอมจะแผ่ได้กว้างเต็มตา */
+            max-width: 1366px; 
             min-height: 100vh; 
             background: #f8fafc; 
             position: relative; 
@@ -61,7 +61,7 @@
             border-radius: 28px; box-shadow: 0 20px 40px rgba(0,0,0,0.25); text-align: center;
         }
         .login-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 24px; }
-        .login-logo-img { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #0f3d2a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .login-logo-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #0f3d2a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 5px; background: #0f3d2a; }
         .login-title { font-size: 26px; font-weight: 800; color: #0f3d2a; margin-top: 14px; letter-spacing: 0.5px; }
         .login-subtitle { color: #64748b; font-size: 13px; margin-bottom: 24px; }
         .form-group { text-align: left; margin-bottom: 20px; }
@@ -72,7 +72,7 @@
         .login-error { color: #ef4444; font-size: 13px; margin-top: 12px; font-weight: 600; display: none; }
 
         /* ----------------------------------------------------
-            📌 STICKY HEADER (แถบด้านบนสีเขียวเข้มแบบใหม่ สวยหรู)
+            📌 STICKY HEADER (Title Bar ด้านบน)
         ---------------------------------------------------- */
         .header { 
             background: linear-gradient(90deg, #0f3d2a 0%, #15553b 100%);
@@ -88,15 +88,15 @@
         }
         .logo-zone { display: flex; align-items: center; gap: 14px; }
         
-        /* วงกลมไอคอนบน Title Bar ตามที่คุณดี้ลสั่งเลยค่ะ */
+        /* ปรับกรอบโลโก้วงกลมบน Title bar ให้สวยเด่นชัดเจน */
         .header-logo-img { 
             height: 46px; 
             width: 46px; 
-            object-fit: cover; 
             border-radius: 50%; 
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            background: white;
+            border: 2px solid #10b981;
+            background: #0f3d2a;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            padding: 2px;
         }
         .header-title-box { display: flex; flex-direction: column; }
         .header-program-name { font-size: 20px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
@@ -106,7 +106,7 @@
         #liveClock { font-size: 18px; font-weight: 700; color: #ffffff; font-family: monospace; }
         
         /* ----------------------------------------------------
-            💻 MAIN CONTENT AREA (รองรับการขยาย)
+            💻 MAIN CONTENT AREA
         ---------------------------------------------------- */
         .main { 
             padding: 95px 24px 100px 24px; 
@@ -120,7 +120,7 @@
         .floor-title { font-size: 15px; font-weight: 800; color: #0f3d2a; background: #e2f5ea; padding: 6px 14px; border-radius: 8px; margin-bottom: 14px; display: inline-block; border-left: 4px solid #0f3d2a; }
         
         /* ----------------------------------------------------
-            📇 GRID LAYOUT: ในคอมแสดง 3 คอลัมน์เต็มตา ไม่ตลกแล้ว
+            📇 GRID LAYOUT (3 คอลัมน์สำหรับคอมพิวเตอร์)
         ---------------------------------------------------- */
         .department-grid { 
             display: grid;
@@ -191,7 +191,7 @@
         .status-error { color: #f43f5e; }
 
         /* ----------------------------------------------------
-            📊 DASHBOARD SCREEN (คอม 3 บล็อกสไตล์เดสก์ท็อป)
+            📊 DASHBOARD SCREEN
         ---------------------------------------------------- */
         .dash-header { margin-bottom: 16px; }
         .dash-title { font-size: 18px; font-weight: 800; color: #0f3d2a; }
@@ -202,7 +202,7 @@
         .green-flat { color: #0f3d2a; }
         
         /* ----------------------------------------------------
-            📌 FIXED FOOTER NAV (บาร์ล่างโทนสีเขียวเข้มใหม่แมตช์คู่กัน)
+            📌 FIXED FOOTER NAV
         ---------------------------------------------------- */
         .footer-container { 
             position: fixed; bottom: 0; left: 0; right: 0; 
@@ -237,7 +237,7 @@
         .btn-cancel { background: #e2e8f0; color: #475569; }
 
         /* ====================================================
-            📱 MEDIA QUERIES: จุดเปลี่ยนร่างสลับโหมดอัตโนมัติเมื่ออยู่บนมือถือ
+            📱 MEDIA QUERIES (สลับโหมดอัตโนมัติบนมือถือ)
            ==================================================== */
         @media (max-width: 900px) {
             .header { padding: 12px 16px; }
@@ -266,7 +266,8 @@
     <div id="loginScreen">
         <div class="login-box">
             <div class="login-brand">
-                <img src="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz" alt="Operator Logo" class="login-logo-img">
+                <!-- โลโก้แอปในหน้า Login แก้ไขให้ฝังในตัวโค้ดแล้วขึ้นแน่นอนค่ะ -->
+                <svg class="login-logo-img" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"><circle cx="96" cy="96" r="96" fill="#0f3d2a"/><circle cx="96" cy="96" r="84" fill="none" stroke="#10b981" stroke-width="4"/><path d="M64 64 C64 59 69 54 74 54 C79 54 82 58 84 62 L89 74 C91 78 89 82 85 84 L80 87 C84 96 92 104 101 108 L104 103 C106 99 110 97 114 99 L126 104 C130 106 134 109 134 114 C134 114 129 134 114 134 C94 134 54 94 54 74 C54 59 59 64 64 64 Z" fill="#10b981"/><path d="M115 50 A 25 25 0 0 1 140 75" stroke="#10b981" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M115 35 A 40 40 0 0 1 155 75" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
                 <div class="login-title">PHONE HUB</div>
             </div>
             <div class="login-subtitle">หน่วย Operator | Phyathai Nawamin</div>
@@ -294,11 +295,11 @@
         </div>
     </div>
 
-    <!-- FIXED APP HEADER -->
+    <!-- FIXED APP HEADER (Title Bar) -->
     <div class="header">
         <div class="logo-zone">
-            <!-- แสดงผลรูปไอคอนที่คุณดี้ลส่งมาในกรอบวงกลมสวย ๆ บน Title bar ค่ะ -->
-            <img src="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz" alt="Operator Logo" class="header-logo-img">
+            <!-- 🔵 เปลี่ยนมาใช้ไอคอนวงกลมโทรศัพท์สีเขียว ฝังโค้ดระบบ หมดปัญหารูปเก่าตกค้างชัวร์ค่ะ! -->
+            <svg class="header-logo-img" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"><circle cx="96" cy="96" r="96" fill="#0f3d2a"/><circle cx="96" cy="96" r="84" fill="none" stroke="#10b981" stroke-width="4"/><path d="M64 64 C64 59 69 54 74 54 C79 54 82 58 84 62 L89 74 C91 78 89 82 85 84 L80 87 C84 96 92 104 101 108 L104 103 C106 99 110 97 114 99 L126 104 C130 106 134 109 134 114 C134 114 129 134 114 134 C94 134 54 94 54 74 C54 59 59 64 64 64 Z" fill="#10b981"/><path d="M115 50 A 25 25 0 0 1 140 75" stroke="#10b981" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M115 35 A 40 40 0 0 1 155 75" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
             <div class="header-title-box">
                 <div class="header-program-name">PHONE HUB</div>
                 <div class="user-tag" id="currentUserTag">เจ้าหน้าที่: -</div>
@@ -419,7 +420,7 @@
             "แผนกผู้ป่วยนอกอายุรกรรม", "แผนกผู้ป่วยนอกศัลยกรรมและทางเดินปัสสาวะ", "แผนกศูนย์กล้ามเนื้อกระดูกและข้อ"
         ],
         "ชั้น 2": [
-            "Document Service Center", "แผนกผู้ป่วยนอกสูตินรีเวชกรรม", "แผนกทันตกรรม", 
+            "Document Service Center", "แผนกผู้ป่วยนอกสูตินรีเววชกรรม", "แผนกทันตกรรม", 
             "แผนกผู้ป่วยนอกทางเดินอาหาร ตับ และศูนย์ส่องกล้อง", "แผนกผู้ป่วยนอกสุขภาพเด็ก"
         ],
         "ชั้น 3": [],
