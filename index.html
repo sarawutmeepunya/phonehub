@@ -6,23 +6,36 @@
     <title>PHONE HUB</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background:#f2f7f4; color: #334155; }
-        .container { width:1366px; height:768px; margin:auto; background:#f8fafc; overflow:hidden; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        body { background:#f2f7f4; color: #334155; display: flex; justify-content: center; min-height: 100vh; }
+        
+        /* ----------------------------------------------------
+           📦 CONTAINER ปรับให้รองรับทั้งคอมและมือถือ (Responsive)
+        ---------------------------------------------------- */
+        .container { 
+            width: 100%; 
+            max-width: 1366px; 
+            min-height: 100vh; 
+            background:#f8fafc; 
+            position: relative; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            display: flex;
+            flex-direction: column;
+        }
         
         /* ----------------------------------------------------
            🔑 LOGIN SCREEN STYLE
         ---------------------------------------------------- */
         #loginScreen {
             position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, #005A36 0%, #008248 100%);
-            display: flex; align-items: center; justify-content: center; z-index: 999; transition: all 0.5s ease;
+            display: flex; align-items: center; justify-content: center; z-index: 999; transition: all 0.5s ease; padding: 20px;
         }
         .login-box {
-            background: white; width: 450px; padding: 40px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center;
+            background: white; width: 100%; max-width: 450px; padding: 40px 25px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center;
         }
         .login-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .login-logo-img { width: 190px; height: auto; object-fit: contain; }
-        .login-title { font-size: 34px; font-weight: bold; color: #005A36; margin-top: 10px; }
-        .login-subtitle { color: #64748b; font-size: 14px; margin-bottom: 25px; letter-spacing: 0.5px; }
+        .login-logo-img { width: 160px; height: auto; object-fit: contain; }
+        .login-title { font-size: 30px; font-weight: bold; color: #005A36; margin-top: 10px; }
+        .login-subtitle { color: #64748b; font-size: 13px; margin-bottom: 25px; letter-spacing: 0.5px; }
         .form-group { text-align: left; margin-bottom: 20px; }
         .form-group label { display: block; font-size: 14px; font-weight: bold; color: #334155; margin-bottom: 8px; }
         .form-control { width: 100%; height: 50px; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 16px; outline: none; transition: border-color 0.2s; }
@@ -34,31 +47,48 @@
         /* ----------------------------------------------------
             HEADER STYLE
         ---------------------------------------------------- */
-        .header { height: 110px; background: white; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; border-bottom: 1px solid #e2e8f0; }
-        .logo-zone { display: flex; align-items: center; gap: 20px; }
-        .header-logo-img { height: 100px; width: auto; object-fit: contain; }
+        .header { background: white; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; gap: 15px; }
+        .logo-zone { display: flex; align-items: center; gap: 15px; }
+        .header-logo-img { height: 70px; width: auto; object-fit: contain; }
         .header-title-box { display: flex; flex-direction: column; }
-        .header-program-name { font-size: 24px; font-weight: bold; color: #005A36; line-height: 1.1; }
-        .user-tag { background: #e6f4ea; color: #005A36; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid #ceead6; margin-top: 6px; display: inline-block; width: max-content; }
-        .clock-zone { text-align: right; }
-        #liveDate { font-size: 14px; color: #64748b; font-weight: 500; }
-        #liveClock { font-size: 26px; font-weight: bold; color: #005A36; font-family: 'Courier New', Courier, monospace; margin-top: 2px; }
+        .header-program-name { font-size: 20px; font-weight: bold; color: #005A36; line-height: 1.1; }
+        .user-tag { background: #e6f4ea; color: #005A36; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #ceead6; margin-top: 4px; display: inline-block; width: max-content; }
+        .clock-zone { text-align: right; min-width: max-content; }
+        #liveDate { font-size: 12px; color: #64748b; font-weight: 500; }
+        #liveClock { font-size: 20px; font-weight: bold; color: #005A36; font-family: 'Courier New', Courier, monospace; margin-top: 2px; }
         
         /* ----------------------------------------------------
             MAIN AREA & FLOOR SECTION STYLE
         ---------------------------------------------------- */
-        .main { padding: 20px 40px; height: calc(768px - 200px); overflow-y: auto; }
+        .main { padding: 20px; flex: 1; padding-bottom: 110px; }
         .app-screen { display: none; }
         .app-screen.active { display: block; }
         
         .floor-section { margin-bottom: 30px; }
-        .floor-title { font-size: 18px; font-weight: bold; color: #005A36; background: #e6f4ea; padding: 8px 16px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #008248; }
+        .floor-title { font-size: 16px; font-weight: bold; color: #005A36; background: #e6f4ea; padding: 8px 16px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #008248; }
         
         /* ----------------------------------------------------
-            GRID LAYOUT
+            GRID LAYOUT (ปรับขนาดตามหน้าจออัตโนมัติ)
         ---------------------------------------------------- */
-        .department-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .dept-card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 18px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; transition: all 0.2s; }
+        .department-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+        }
+        
+        /* เมื่อเปิดในมือถือหรือหน้าจอเล็กกว่า 900px จะเรียงเป็น 1 แถวแนวตั้ง */
+        @media (max-width: 900px) {
+            .department-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .header { flex-direction: row; justify-content: space-between; }
+            .header-logo-img { height: 55px; }
+            .header-program-name { font-size: 18px; }
+            #liveClock { font-size: 18px; }
+        }
+
+        .dept-card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 18px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; transition: all 0.2s; }
         .dept-card:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(0, 90, 54, 0.06); border-color: #bcebc4; }
         .dept-title { font-size: 15px; font-weight: bold; color: #005A36; text-align: center; margin-bottom: 12px; height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
         
@@ -71,7 +101,7 @@
         .text-missed { color: #DC3545; }
         
         .action-area-mini { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
-        .action-btn-mini { flex: 1; height: 44px; border: none; border-radius: 10px; color: white; font-size: 15px; font-weight: bold; cursor: pointer; transition: all 0.1s; display: flex; align-items: center; justify-content: center; gap: 4px; }
+        .action-btn-mini { flex: 1; height: 44px; border: none; border-radius: 10px; color: white; font-size: 15px; font-weight: bold; cursor: pointer; transition: all 0.1s; display: flex; align-items: center; justify-content: center; gap: 4px; -webkit-tap-highlight-color: transparent; }
         .action-btn-mini:active { transform: scale(0.95); }
         .action-btn-mini:disabled { background: #cbd5e1 !important; color: #94a3b8; cursor: not-allowed; }
         .received { background: #28A745; }
@@ -91,27 +121,32 @@
             📊 DASHBOARD SCREEN STYLE
         ---------------------------------------------------- */
         .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .dash-title { font-size: 24px; font-weight: bold; color: #005A36; }
-        .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 30px; }
-        .dash-card { background: white; padding: 30px; border-radius: 24px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
-        .dash-card-title { font-size: 18px; color: #64748b; font-weight: 500; }
-        .dash-card-value { font-size: 56px; font-weight: bold; margin-top: 10px; }
+        .dash-title { font-size: 22px; font-weight: bold; color: #005A36; }
+        .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; }
+        
+        @media (max-width: 768px) {
+            .dash-grid { grid-template-columns: 1fr; gap: 15px; }
+        }
+        
+        .dash-card { background: white; padding: 25px; border-radius: 24px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .dash-card-title { font-size: 16px; color: #64748b; font-weight: 500; }
+        .dash-card-value { font-size: 42px; font-weight: bold; margin-top: 10px; }
         .green-flat { color: #005A36; }
         
         /* ----------------------------------------------------
-            📱 MODERN FLOATING FOOTER STYLE
+            📱 MODERN FLOATING FOOTER STYLE (สำหรับมือถือ)
         ---------------------------------------------------- */
-        .footer-container { position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: center; padding: 0 40px; pointer-events: none; }
+        .footer-container { position: fixed; bottom: 15px; left: 0; width: 100%; display: flex; justify-content: center; padding: 0 15px; pointer-events: none; z-index: 998; }
         .footer-nav {
             background: rgba(0, 90, 54, 0.96); backdrop-filter: blur(10px);
-            width: 780px; height: 68px; border-radius: 20px; display: flex; justify-content: space-around; align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 90, 54, 0.25); pointer-events: auto; padding: 0 10px;
+            width: 100%; max-width: 780px; height: 68px; border-radius: 20px; display: flex; justify-content: space-around; align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 90, 54, 0.25); pointer-events: auto; padding: 0 5px;
         }
         .nav-item {
-            flex: 1; text-align: center; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; cursor: pointer;
-            height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: all 0.2s; border-radius: 14px;
+            flex: 1; text-align: center; color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 500; cursor: pointer;
+            height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: all 0.2s; border-radius: 14px; -webkit-tap-highlight-color: transparent;
         }
-        .nav-item span { font-size: 20px; }
+        .nav-item span { font-size: 18px; }
         .nav-item:hover { color: white; background: rgba(255, 255, 255, 0.1); }
         .nav-item.active { color: white; background: rgba(255, 255, 255, 0.15); font-weight: bold; }
         
@@ -122,10 +157,10 @@
         .nav-logout:hover { color: #ff4d4d; background: rgba(255, 77, 77, 0.1); }
 
         /* ----------------------------------------------------
-            📦 MODAL WINDOW (หน้าต่างเพิ่มหน่วยงาน)
+            📦 MODAL WINDOW
         ---------------------------------------------------- */
-        .modal { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
-        .modal-content { background: white; width: 450px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: white; width: 100%; max-width: 450px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .modal-title { font-size: 20px; font-weight: bold; color: #005A36; margin-bottom: 20px; text-align: center; }
         .modal-buttons { display: flex; gap: 10px; margin-top: 10px; }
         .btn-modal { flex: 1; height: 46px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; }
