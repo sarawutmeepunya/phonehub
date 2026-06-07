@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Hub - Phyathai Premium</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background:#f2f7f4; color: #334155; }
+        .container { width:1366px; height:768px; margin:auto; background:#f8fafc; overflow:hidden; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        /* ----------------------------------------------------
+           🔑 LOGIN SCREEN STYLE
+        ---------------------------------------------------- */
+        #loginScreen {
+            position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, #005A36 0%, #008248 100%);
+            display: flex; align-items: center; justify-content: center; z-index: 999; transition: all 0.5s ease;
+        }
+        .login-box {
+            background: white; width: 450px; padding: 40px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center;
+        }
+        .login-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px; }
+        /* 📐 ปูดาวปรับเพิ่มขนาดโลโก้หน้า Login ตรงนี้ให้ใหญ่ขึ้นเด่น ๆ เลยค่ะ */
+        .login-logo-img { width: 260px; height: auto; object-fit: contain; }
+        .login-title { font-size: 34px; font-weight: bold; color: #005A36; margin-top: 10px; }
+        .login-subtitle { color: #64748b; font-size: 14px; margin-bottom: 25px; letter-spacing: 0.5px; }
+        .form-group { text-align: left; margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 14px; font-weight: bold; color: #334155; margin-bottom: 8px; }
+        .form-control { width: 100%; height: 50px; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 16px; outline: none; transition: border-color 0.2s; }
+        .form-control:focus { border-color: #005A36; }
+        .login-btn { width: 100%; height: 50px; background: #005A36; color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+        .login-btn:hover { background: #004428; }
+        .login-error { color: #DC3545; font-size: 14px; margin-top: 12px; font-weight: bold; display: none; }
+
+        /* ----------------------------------------------------
+            HEADER STYLE
+        ---------------------------------------------------- */
+        /* 📐 ปรับขยายความสูง Header เล็กน้อยเพื่อให้รองรับโลโก้ที่ใหญ่ขึ้นได้อย่างลงตัวค่ะ */
+        .header { height: 110px; background: white; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; border-bottom: 1px solid #e2e8f0; }
+        .logo-zone { display: flex; align-items: center; gap: 20px; }
+        /* 📐 ขยายโลโก้ที่แถบหัวด้านบนให้ใหญ่และชัดเจนยิ่งขึ้นค่ะ */
+        .header-logo-img { height: 85px; width: auto; object-fit: contain; }
+        .header-title-box { display: flex; flex-direction: column; }
+        .header-program-name { font-size: 24px; font-weight: bold; color: #005A36; line-height: 1.1; }
+        .user-tag { background: #e6f4ea; color: #005A36; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid #ceead6; margin-top: 6px; display: inline-block; width: max-content; }
+        .clock-zone { text-align: right; }
+        #liveDate { font-size: 14px; color: #64748b; font-weight: 500; }
+        #liveClock { font-size: 26px; font-weight: bold; color: #005A36; font-family: 'Courier New', Courier, monospace; margin-top: 2px; }
+        
+        /* ----------------------------------------------------
+            MAIN AREA & FLOOR SECTION STYLE
+        ---------------------------------------------------- */
+        .main { padding: 20px 40px; height: calc(768px - 200px); overflow-y: auto; }
+        .app-screen { display: none; }
+        .app-screen.active { display: block; }
+        
+        .floor-section { margin-bottom: 30px; }
+        .floor-title { font-size: 18px; font-weight: bold; color: #005A36; background: #e6f4ea; padding: 8px 16px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #008248; }
+        
+        /* ----------------------------------------------------
+            GRID LAYOUT
+        ---------------------------------------------------- */
+        .department-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .dept-card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 18px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; transition: all 0.2s; }
+        .dept-card:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(0, 90, 54, 0.06); border-color: #bcebc4; }
+        .dept-title { font-size: 15px; font-weight: bold; color: #005A36; text-align: center; margin-bottom: 12px; height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+        
+        .dept-counters { display: flex; justify-content: space-around; background: #f4f9f6; border-radius: 12px; padding: 8px 5px; margin-bottom: 12px; border: 1px solid #e6f0ea; }
+        .counter-box { text-align: center; flex: 1; }
+        .counter-box:first-child { border-right: 1px solid #e2e8f0; }
+        .counter-label { font-size: 11px; color: #64748b; margin-bottom: 2px; }
+        .counter-num { font-size: 22px; font-weight: bold; }
+        .text-received { color: #28A745; }
+        .text-missed { color: #DC3545; }
+        
+        .action-area-mini { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+        .action-btn-mini { flex: 1; height: 44px; border: none; border-radius: 10px; color: white; font-size: 15px; font-weight: bold; cursor: pointer; transition: all 0.1s; display: flex; align-items: center; justify-content: center; gap: 4px; }
+        .action-btn-mini:active { transform: scale(0.95); }
+        .action-btn-mini:disabled { background: #cbd5e1 !important; color: #94a3b8; cursor: not-allowed; }
+        .received { background: #28A745; }
+        .missed { background: #DC3545; }
+        .received:hover { background: #22c55e; }
+        .missed:hover { background: #ef4444; }
+        
+        .comment-input { width: 100%; height: 38px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0 12px; font-size: 13px; outline: none; transition: all 0.2s; }
+        .comment-input:focus { border-color: #005A36; background: #f4f9f6; }
+        
+        .status-msg-mini { font-size: 12px; text-align: center; margin-top: 8px; font-weight: bold; min-height: 16px; }
+        .status-loading { color: #eab308; }
+        .status-success { color: #28A745; }
+        .status-error { color: #DC3545; }
+
+        /* ----------------------------------------------------
+           📊 DASHBOARD SCREEN STYLE
+        ---------------------------------------------------- */
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .dash-title { font-size: 24px; font-weight: bold; color: #005A36; }
+        .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 30px; }
+        .dash-card { background: white; padding: 30px; border-radius: 24px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .dash-card-title { font-size: 18px; color: #64748b; font-weight: 500; }
+        .dash-card-value { font-size: 56px; font-weight: bold; margin-top: 10px; }
+        .green-flat { color: #005A36; }
+        
+        /* ----------------------------------------------------
+           📱 MODERN FLOATING FOOTER STYLE
+        ---------------------------------------------------- */
+        .footer-container { position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: center; padding: 0 40px; pointer-events: none; }
+        .footer-nav {
+            background: rgba(0, 90, 54, 0.96); backdrop-filter: blur(10px);
+            width: 780px; height: 68px; border-radius: 20px; display: flex; justify-content: space-around; align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 90, 54, 0.25); pointer-events: auto; padding: 0 10px;
+        }
+        .nav-item {
+            flex: 1; text-align: center; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; cursor: pointer;
+            height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: all 0.2s; border-radius: 14px;
+        }
+        .nav-item span { font-size: 20px; }
+        .nav-item:hover { color: white; background: rgba(255, 255, 255, 0.1); }
+        .nav-item.active { color: white; background: rgba(255, 255, 255, 0.15); font-weight: bold; }
+        
+        #navAdminOnly { display: none; color: #fde047; }
+        #navAdminOnly:hover { background: rgba(253, 224, 71, 0.15); color: #fff; }
+
+        .nav-logout { color: #ff9aa2; }
+        .nav-logout:hover { color: #ff4d4d; background: rgba(255, 77, 77, 0.1); }
+
+        /* ----------------------------------------------------
+           📦 MODAL WINDOW (หน้าต่างเพิ่มหน่วยงาน)
+        ---------------------------------------------------- */
+        .modal { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-content { background: white; width: 450px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .modal-title { font-size: 20px; font-weight: bold; color: #005A36; margin-bottom: 20px; text-align: center; }
+        .modal-buttons { display: flex; gap: 10px; margin-top: 10px; }
+        .btn-modal { flex: 1; height: 46px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-confirm { background: #005A36; color: white; }
+        .btn-confirm:hover { background: #004428; }
+        .btn-cancel { background: #e2e8f0; color: #64748b; }
+        .btn-cancel:hover { background: #cbd5e1; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="loginScreen">
+        <div class="login-box">
+            <div class="login-brand">
+                <img src="https://lh3.googleusercontent.com/d/183x5AcfnwjAVsiM-LSS3YTfZE2iEX2ls" alt="Operator Logo" class="login-logo-img">
+                <div class="login-title">Phone Hub</div>
+            </div>
+            <div class="login-subtitle">หน่วย Operator | Phyathai Nawamin</div>
+            
+            <div class="form-group">
+                <label>เลือกชื่อเจ้าหน้าที่</label>
+                <select class="form-control" id="username">
+                    <option value="">-- กรุณาเลือกชื่อของคุณ --</option>
+                    <option value="คุณศราวุฒิ มีปัญญา (750456)">คุณศราวุฒิ มีปัญญา (750456)</option>
+                    <option value="คุณจุฑามาศ ทองสุข (750017)">คุณจุฑามาศ ทองสุข (750017)</option>
+                    <option value="คุณกรวรรณ กิ่งแก้วโอฬาร (750114)">คุณกรวรรณ กิ่งแก้วโอฬาร (750114)</option>
+                    <option value="คุณนาถยา สุขสอาด (538444)">คุณนาถยา สุขสอาด (538444)</option>
+                    <option value="คุณกสมา ถิ่นนุช (563208)">คุณกสma ถิ่นนุช (563208)</option>
+                    <option value="คุณรัศมี ดวงประเสริฐ (625176)">คุณรัศมี ดวงประเสริฐ (625176)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>รหัสผ่านเข้าใช้งาน (รหัสพนักงานของคุณ)</label>
+                <input type="password" class="form-control" id="password" placeholder="ระบุรหัสพนักงาน 6 หลัก">
+            </div>
+            
+            <button class="login-btn" onclick="checkLogin()">เข้าสู่ระบบ</button>
+            <div class="login-error" id="loginError">❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้เลือกชื่อค่ะ</div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="logo-zone">
+            <img src="https://lh3.googleusercontent.com/d/183x5AcfnwjAVsiM-LSS3YTfZE2iEX2ls" alt="Operator Logo" class="header-logo-img">
+            <div class="header-title-box">
+                <div class="header-program-name">Phone Hub</div>
+                <div class="user-tag" id="currentUserTag">เจ้าหน้าที่: -</div>
+            </div>
+        </div>
+        <div class="clock-zone">
+            <div id="liveDate">วันอาทิตย์ที่ 7 มิถุนายน 2569</div>
+            <div id="liveClock">19:15:00</div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div id="screenHome" class="app-screen active">
+            <div id="floorContainer"></div>
+        </div>
+
+        <div id="screenDashboard" class="app-screen">
+            <div class="dash-header">
+                <div class="dash-title">📊 แดชบอร์ดสรุปงานวันนี้</div>
+            </div>
+            <div class="dash-grid">
+                <div class="dash-card">
+                    <div class="dash-card-title">🟢 รับสายสำเร็จทั้งหมด</div>
+                    <div class="dash-card-value text-received" id="dashTotalReceived">0</div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-card-title">🔴 ไม่รับสายทั้งหมด</div>
+                    <div class="dash-card-value text-missed" id="dashTotalMissed">0</div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-card-title">🏢 หน่วยงานในระบบ</div>
+                    <div class="dash-card-value green-flat" id="dashTotalDepts">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="footer-nav">
+            <div class="nav-item active" id="navHome" onclick="switchScreen('home')">
+                <span>🏠</span>หน้าหลัก
+            </div>
+            <div class="nav-item" id="navAdminOnly" onclick="openAddDeptModal()">
+                <span>👑</span>เพิ่มหน่วยงาน
+            </div>
+            <div class="nav-item" id="navDash" onclick="switchScreen('dash')">
+                <span>📊</span>Dashboard
+            </div>
+            <div class="nav-item" onclick="resetCounters()">
+                <span>⚙️</span>Reset
+            </div>
+            <div class="nav-item nav-logout" onclick="handleLogout()">
+                <span>🚪</span>Logout
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="addDeptModal">
+        <div class="modal-content">
+            <div class="modal-title">👑 ระบบเพิ่มหน่วยงาน (สิทธิ์หัวหน้า)</div>
+            <div class="form-group">
+                <label>เลือกชั้นที่จะจัดเก็บ</label>
+                <select class="form-control" id="modalFloorSelect">
+                    <option value="ชั้น B">ชั้น B</option>
+                    <option value="ชั้น 1">ชั้น 1</option>
+                    <option value="ชั้น 2">ชั้น 2</option>
+                    <option value="ชั้น 3">ชั้น 3</option>
+                    <option value="ชั้น 4">ชั้น 4</option>
+                    <option value="ชั้น 5">ชั้น 5</option>
+                    <option value="ชั้น 6">ชั้น 6</option>
+                    <option value="ชั้น 7">ชั้น 7</option>
+                    <option value="ชั้น 8">ชั้น 8</option>
+                    <option value="ชั้น 9">ชั้น 9</option>
+                    <option value="ชั้น 10">ชั้น 10</option>
+                    <option value="ชั้น 11">ชั้น 11</option>
+                    <option value="ชั้น 12">ชั้น 12</option>
+                    <option value="ชั้น 13">ชั้น 13</option>
+                    <option value="ชั้น 14">ชั้น 14</option>
+                    <option value="ชั้น 15">ชั้น 15</option>
+                    <option value="ชั้น 16">ชั้น 16</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>ชื่อหน่วยงาน / แผนกใหม่</label>
+                <input type="text" class="form-control" id="modalDeptNameInput" placeholder="กรุณาใส่ชื่อหน่วยงาน">
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-modal btn-cancel" onclick="closeAddDeptModal()">ยกเลิก</button>
+                <button class="btn-modal btn-confirm" onclick="submitAddNewDept()">บันทึกเพิ่มหน่วยงาน</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwb4-_-tcyoQAc0xU_H-lLk1zi2WYTFGyUn9yw2ZLkGSvbgStasCBndPBqYpWkNzQLD/exec"; 
+
+    let loggedInUser = "";
+    const ADMIN_USER = "คุณศราวุฒิ มีปัญญา (750456)"; 
+
+    const userCredentials = {
+        "คุณศราวุฒิ มีปัญญา (750456)": "750456",
+        "คุณจุฑามาศ ทองสุข (750017)": "750017",
+        "คุณกรวรรณ กิ่งแก้วโอฬาร (750114)": "750114",
+        "คุณนาถยา สุขสอาด (538444)": "538444",
+        "คุณกสมา ถิ่นนุช (563208)": "563208",
+        "คุณรัศมี ดวงประเสริฐ (625176)": "625176"
+    };
+
+    const defaultStructure = {
+        "ชั้น B": [
+            "แผนกอื่น ๆ (เก็บข้อมูล KPI)"
+        ],
+        "ชั้น 1": [
+            "แผนกผู้ป่วยนอกประกันสังคม (A)", "แผนกผู้ป่วยนอกประกันสังคม (B)", "แผนกผู้ป่วยนอกประกันสังคม (Telecare)",
+            "แผนกผู้ป่วยนอกอายุรกรรม", "แผนกผู้ป่วยนอกศัลยกรรมและทางเดินปัสสาวะ", "แผนกศูนย์กล้ามเนื้อกระดูกและข้อ"
+        ],
+        "ชั้น 2": [
+            "Document Service Center", "แผนกผู้ป่วยนอกสูตินรีเวชกรรม", "แผนกทันตกรรม", 
+            "แผนกผู้ป่วยนอกทางเดินอาหาร ตับ และศูนย์ส่องกล้อง", "แผนกผู้ป่วยนอกสุขภาพเด็ก"
+        ],
+        "ชั้น 3": [],
+        "ชั้น 4": [
+            "แผนกสร้างเสริมสุขภาพ", "แผนกผู้ป่วยนอกหัวใจ", "แผนกศูนย์เวชศาสตร์ป้องกันภณา", "แผนกกายภาพบำบัด"
+        ],
+        "ชั้น 5": [], "ชั้น 6": [],
+        "ชั้น 7": [
+            "แผนกมะเร็งอายุรวิวัฒน์"
+        ],
+        "ชั้น 8": [], "ชั้น 9": [], "ชั้น 10": [], "ชั้น 11": [], "ชั้น 12": [], "ชั้น 13": [], "ชั้น 14": [], "ชั้น 15": [], "ชั้น 16": []
+    };
+
+    let currentStructure = JSON.parse(localStorage.getItem('phoneHubStructure')) || defaultStructure;
+    let localCounts = JSON.parse(localStorage.getItem('phoneHubCounts')) || {};
+
+    Object.keys(currentStructure).forEach(floor => {
+        currentStructure[floor].forEach(dept => {
+            if (!localCounts[dept]) localCounts[dept] = { missed: 0, received: 0 };
+        });
+    });
+
+    function updateClock() {
+        const now = new Date();
+        const thDate = now.toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const thTime = now.toLocaleTimeString('th-TH', { hour12: false });
+        document.getElementById('liveDate').innerText = thDate;
+        document.getElementById('liveClock').innerText = thTime;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function checkLogin() {
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        const errorEl = document.getElementById('loginError');
+
+        if(user !== "" && userCredentials[user] === pass.trim()) {
+            loggedInUser = user;
+            document.getElementById('currentUserTag').innerText = `เจ้าหน้าที่: ${loggedInUser}`;
+            
+            if(loggedInUser === ADMIN_USER) {
+                document.getElementById('navAdminOnly').style.display = 'flex';
+            } else {
+                document.getElementById('navAdminOnly').style.display = 'none';
+            }
+
+            document.getElementById('loginScreen').style.opacity = "0";
+            setTimeout(() => { document.getElementById('loginScreen').style.display = "none"; }, 500);
+            errorEl.style.display = "none";
+            document.getElementById('password').value = ""; 
+        } else {
+            errorEl.style.display = "block";
+        }
+    }
+
+    function handleLogout() {
+        if(confirm('คุณต้องการออกจากระบบใช่ไหมครับ?')) {
+            loggedInUser = "";
+            document.getElementById('currentUserTag').innerText = "เจ้าหน้าที่: -";
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+            document.getElementById('navAdminOnly').style.display = 'none';
+            switchScreen('home');
+            
+            const loginScreen = document.getElementById('loginScreen');
+            loginScreen.style.display = "flex";
+            setTimeout(() => { loginScreen.style.opacity = "1"; }, 10);
+        }
+    }
+
+    function openAddDeptModal() { document.getElementById('addDeptModal').style.display = 'flex'; }
+    function closeAddDeptModal() {
+        document.getElementById('addDeptModal').style.display = 'none';
+        document.getElementById('modalDeptNameInput').value = '';
+    }
+
+    function submitAddNewDept() {
+        const floor = document.getElementById('modalFloorSelect').value;
+        const deptName = document.getElementById('modalDeptNameInput').value.trim();
+
+        if (deptName === "") {
+            alert("กรุณากรอกชื่อหน่วยงานด้วยนะคะคุณดี้ล");
+            return;
+        }
+
+        let isDuplicate = false;
+        Object.keys(currentStructure).forEach(f => {
+            if(currentStructure[f].includes(deptName)) isDuplicate = true;
+        });
+
+        if (isDuplicate) {
+            alert("ชื่อแผนกนี้มีอยู่ในระบบแล้วค่ะคุณดี้ล");
+            return;
+        }
+
+        currentStructure[floor].push(deptName);
+        localCounts[deptName] = { missed: 0, received: 0 };
+
+        localStorage.setItem('phoneHubStructure', JSON.stringify(currentStructure));
+        localStorage.setItem('phoneHubCounts', JSON.stringify(localCounts));
+
+        renderSystemGrid();
+        closeAddDeptModal();
+        alert(`เพิ่มแผนก "${deptName}" ในกลุ่ม ${floor} เรียบร้อยแล้วค่ะ!`);
+    }
+
+    function switchScreen(screen) {
+        document.getElementById('navHome').classList.remove('active');
+        document.getElementById('navDash').classList.remove('active');
+        document.getElementById('screenHome').classList.remove('active');
+        document.getElementById('screenDashboard').classList.remove('active');
+
+        if(screen === 'home') {
+            document.getElementById('navHome').classList.add('active');
+            document.getElementById('screenHome').classList.add('active');
+        } else if(screen === 'dash') {
+            document.getElementById('navDash').classList.add('active');
+            document.getElementById('screenDashboard').classList.add('active');
+            calculateDashboard();
+        }
+    }
+
+    function calculateDashboard() {
+        let totalRec = 0;
+        let totalMis = 0;
+        let totalDepts = 0;
+
+        Object.keys(currentStructure).forEach(floor => {
+            currentStructure[floor].forEach(dept => {
+                totalRec += localCounts[dept].received;
+                totalMis += localCounts[dept].missed;
+                totalDepts++;
+            });
+        });
+
+        document.getElementById('dashTotalReceived').innerText = totalRec;
+        document.getElementById('dashTotalMissed').innerText = totalMis;
+        document.getElementById('dashTotalDepts').innerText = totalDepts;
+    }
+
+    let globalGlobalIndex = 0;
+    let deptIndexMapping = {};
+
+    function renderSystemGrid() {
+        const floorContainer = document.getElementById('floorContainer');
+        floorContainer.innerHTML = "";
+        globalGlobalIndex = 0;
+        deptIndexMapping = {};
+
+        Object.keys(currentStructure).forEach(floorName => {
+            if (floorName !== "ชั้น B" && currentStructure[floorName].length > 0) {
+                renderFloorSection(floorName, floorContainer);
+            }
+        });
+
+        if (currentStructure["ชั้น B"] && currentStructure["ชั้น B"].length > 0) {
+            renderFloorSection("ชั้น B", floorContainer);
+        }
+    }
+
+    function renderFloorSection(floorName, container) {
+        const floorSection = document.createElement('div');
+        floorSection.className = 'floor-section';
+        
+        const floorTitle = document.createElement('div');
+        floorTitle.className = 'floor-title';
+        floorTitle.innerText = `🏢 ${floorName}`;
+        floorSection.appendChild(floorTitle);
+
+        const deptGrid = document.createElement('div');
+        deptGrid.className = 'department-grid';
+
+        currentStructure[floorName].forEach(dept => {
+            const currentIndex = globalGlobalIndex;
+            deptIndexMapping[dept] = currentIndex;
+
+            const card = document.createElement('div');
+            card.className = 'dept-card';
+            card.innerHTML = `
+                <div class="dept-title">${dept}</div>
+                <div class="dept-counters">
+                    <div class="counter-box">
+                        <div class="counter-label">🟢 รับสาย</div>
+                        <div class="counter-num text-received" id="countReceived-${currentIndex}">${localCounts[dept].received}</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter-label">🔴 ไม่รับสาย</div>
+                        <div class="counter-num text-missed" id="countMissed-${currentIndex}">${localCounts[dept].missed}</div>
+                    </div>
+                </div>
+                <div class="action-area-mini">
+                    <button class="action-btn-mini received" id="btnReceived-${currentIndex}" onclick="sendDataToExcel('${dept}', 'รับสาย', ${currentIndex})">🟢 รับสาย</button>
+                    <button class="action-btn-mini missed" id="btnMissed-${currentIndex}" onclick="sendDataToExcel('${dept}', 'ไม่รับสาย', ${currentIndex})">🔴 ไม่รับสาย</button>
+                </div>
+                <input type="text" class="comment-input" id="comment-${currentIndex}" placeholder="✍️ ระบุเหตุผลถ้าไม่รับสาย">
+                <div class="status-msg-mini" id="status-${currentIndex}"></div>
+            `;
+            deptGrid.appendChild(card);
+            globalGlobalIndex++;
+        });
+
+        floorSection.appendChild(deptGrid);
+        container.appendChild(floorSection);
+    }
+
+    async function sendDataToExcel(departmentName, status, index) {
+        const btnMissed = document.getElementById(`btnMissed-${index}`);
+        const btnReceived = document.getElementById(`btnReceived-${index}`);
+        const statusMsg = document.getElementById(`status-${index}`);
+        const commentInput = document.getElementById(`comment-${index}`);
+        
+        let commentValue = status === 'ไม่รับสาย' ? commentInput.value.trim() : 'รับสายปกติ';
+        if(status === 'ไม่รับสาย' && commentValue === '') commentValue = 'ไม่ได้ระบุเหตุผล';
+
+        statusMsg.className = "status-msg-mini status-loading";
+        statusMsg.innerText = "⏳ กำลังบันทึก...";
+        btnMissed.disabled = true;
+        btnReceived.disabled = true;
+
+        try {
+            await fetch(WEB_APP_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    department: departmentName,
+                    status: status,
+                    comment: commentValue,
+                    staff: loggedInUser
+                })
+            });
+
+            if (status === 'รับสาย') {
+                localCounts[departmentName].received += 1;
+                document.getElementById(`countReceived-${index}`).innerText = localCounts[departmentName].received;
+            } else {
+                localCounts[departmentName].missed += 1;
+                document.getElementById(`countMissed-${index}`).innerText = localCounts[departmentName].missed;
+            }
+            localStorage.setItem('phoneHubCounts', JSON.stringify(localCounts));
+
+            statusMsg.className = "status-msg-mini status-success";
+            statusMsg.innerText = `✅ บันทึกสำเร็จ`;
+            commentInput.value = ""; 
+            setTimeout(() => { statusMsg.innerText = ""; }, 2000);
+        } catch (error) {
+            statusMsg.className = "status-msg-mini status-error";
+            statusMsg.innerText = "❌ ผิดพลาด";
+        } finally {
+            btnMissed.disabled = false;
+            btnReceived.disabled = false;
+        }
+    }
+
+    function resetCounters() {
+        if(confirm('คุณต้องการรีเซ็ตตัวเลขหน้าจอทั้งหมดใช่ไหมครับ?')) {
+            localStorage.removeItem('phoneHubCounts');
+            localCounts = {};
+            Object.keys(currentStructure).forEach(floor => {
+                currentStructure[floor].forEach(dept => {
+                    localCounts[dept] = { missed: 0, received: 0 };
+                });
+            });
+            renderSystemGrid();
+            calculateDashboard();
+        }
+    }
+
+    renderSystemGrid();
+</script>
+</body>
+</html>
