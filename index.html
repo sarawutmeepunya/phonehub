@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>PHONE HUB</title>
-    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/183x5AcfnwjAVsiM-LSS3YTfZE2iEX2ls">
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/183x5AcfnwjAVsiM-LSS3YTfZE2iEX2ls">
+    <!-- 🎨 ไอคอนที่คุณดี้ลเลือกสำหรับแสดงบนหน้าจอมือถือ (App Icon) และคอมพิวเตอร์ (Favicon) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="PHONE HUB">
     <style>
         /* ----------------------------------------------------
            🎨 GLOBAL APP STYLE & RESET
@@ -48,7 +52,7 @@
         ---------------------------------------------------- */
         #loginScreen {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(180deg, #005A36 0%, #004428 100%);
+            background: linear-gradient(180deg, #0f3d2a 0%, #061f15 100%);
             display: flex; align-items: center; justify-content: center; 
             z-index: 9999; transition: all 0.4s ease; padding: 24px;
         }
@@ -57,40 +61,49 @@
             border-radius: 28px; box-shadow: 0 20px 40px rgba(0,0,0,0.25); text-align: center;
         }
         .login-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 24px; }
-        .login-logo-img { width: 110px; height: auto; object-fit: contain; }
-        .login-title { font-size: 26px; font-weight: 800; color: #005A36; margin-top: 12px; letter-spacing: 0.5px; }
+        .login-logo-img { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #0f3d2a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .login-title { font-size: 26px; font-weight: 800; color: #0f3d2a; margin-top: 14px; letter-spacing: 0.5px; }
         .login-subtitle { color: #64748b; font-size: 13px; margin-bottom: 24px; }
         .form-group { text-align: left; margin-bottom: 20px; }
         .form-group label { display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 8px; }
         .form-control { width: 100%; height: 52px; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 15px; outline: none; background: #f8fafc; transition: all 0.2s; }
-        .form-control:focus { border-color: #005A36; background: white; }
-        .login-btn { width: 100%; height: 52px; background: #005A36; color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px; box-shadow: 0 4px 12px rgba(0,90,54,0.2); }
+        .form-control:focus { border-color: #0f3d2a; background: white; }
+        .login-btn { width: 100%; height: 52px; background: #0f3d2a; color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px; box-shadow: 0 4px 12px rgba(15,61,42,0.2); }
         .login-error { color: #ef4444; font-size: 13px; margin-top: 12px; font-weight: 600; display: none; }
 
         /* ----------------------------------------------------
-            📌 STICKY HEADER (ล็อกด้านบนสุด และกว้างตามคอม)
+            📌 STICKY HEADER (แถบด้านบนสีเขียวเข้มแบบใหม่ สวยหรู)
         ---------------------------------------------------- */
         .header { 
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            background: linear-gradient(90deg, #0f3d2a 0%, #15553b 100%);
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
             padding: 12px 24px; 
-            border-bottom: 1px solid #e2e8f0; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: fixed; top: 0; left: 0; right: 0;
             max-width: 1366px; margin: 0 auto;
             z-index: 990;
             height: 70px;
         }
-        .logo-zone { display: flex; align-items: center; gap: 12px; }
-        .header-logo-img { height: 48px; width: auto; object-fit: contain; }
+        .logo-zone { display: flex; align-items: center; gap: 14px; }
+        
+        /* วงกลมไอคอนบน Title Bar ตามที่คุณดี้ลสั่งเลยค่ะ */
+        .header-logo-img { 
+            height: 46px; 
+            width: 46px; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
         .header-title-box { display: flex; flex-direction: column; }
-        .header-program-name { font-size: 18px; font-weight: 800; color: #005A36; }
-        .user-tag { background: #e2f5ea; color: #005A36; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-top: 2px; width: max-content; }
+        .header-program-name { font-size: 20px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; }
+        .user-tag { background: rgba(255, 255, 255, 0.18); color: #ffffff; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 2px; width: max-content; }
         .clock-zone { text-align: right; }
-        #liveDate { font-size: 11px; color: #64748b; font-weight: 500; }
-        #liveClock { font-size: 18px; font-weight: 700; color: #005A36; font-family: monospace; }
+        #liveDate { font-size: 11px; color: rgba(255, 255, 255, 0.75); font-weight: 500; }
+        #liveClock { font-size: 18px; font-weight: 700; color: #ffffff; font-family: monospace; }
         
         /* ----------------------------------------------------
             💻 MAIN CONTENT AREA (รองรับการขยาย)
@@ -104,14 +117,14 @@
         .app-screen.active { display: block; }
         
         .floor-section { margin-bottom: 25px; }
-        .floor-title { font-size: 15px; font-weight: 800; color: #005A36; background: #e2f5ea; padding: 6px 14px; border-radius: 8px; margin-bottom: 14px; display: inline-block; border-left: 4px solid #005A36; }
+        .floor-title { font-size: 15px; font-weight: 800; color: #0f3d2a; background: #e2f5ea; padding: 6px 14px; border-radius: 8px; margin-bottom: 14px; display: inline-block; border-left: 4px solid #0f3d2a; }
         
         /* ----------------------------------------------------
-            📇 GRID LAYOUT: ในคอมแสดง 3 คอลัมน์เต็มตา
+            📇 GRID LAYOUT: ในคอมแสดง 3 คอลัมน์เต็มตา ไม่ตลกแล้ว
         ---------------------------------------------------- */
         .department-grid { 
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* คอม 3 แถว */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 16px; 
         }
 
@@ -170,7 +183,7 @@
         .missed { background: #f43f5e; }
         
         .comment-input { width: 100%; height: 38px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0 10px; font-size: 13px; outline: none; background: #f8fafc; }
-        .comment-input:focus { border-color: #005A36; background: white; }
+        .comment-input:focus { border-color: #0f3d2a; background: white; }
         
         .status-msg-mini { font-size: 12px; text-align: center; font-weight: 600; min-height: 16px; }
         .status-loading { color: #d97706; }
@@ -181,33 +194,33 @@
             📊 DASHBOARD SCREEN (คอม 3 บล็อกสไตล์เดสก์ท็อป)
         ---------------------------------------------------- */
         .dash-header { margin-bottom: 16px; }
-        .dash-title { font-size: 18px; font-weight: 800; color: #005A36; }
+        .dash-title { font-size: 18px; font-weight: 800; color: #0f3d2a; }
         .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .dash-card { background: white; padding: 20px; border-radius: 18px; text-align: center; border: 1px solid #e2e8f0; }
         .dash-card-title { font-size: 14px; color: #475569; font-weight: 600; }
         .dash-card-value { font-size: 32px; font-weight: 800; margin-top: 6px; }
-        .green-flat { color: #005A36; }
+        .green-flat { color: #0f3d2a; }
         
         /* ----------------------------------------------------
-            📌 FIXED FOOTER NAV (บาร์ล่างแบบแผ่กว้างตามคอม)
+            📌 FIXED FOOTER NAV (บาร์ล่างโทนสีเขียวเข้มใหม่แมตช์คู่กัน)
         ---------------------------------------------------- */
         .footer-container { 
             position: fixed; bottom: 0; left: 0; right: 0; 
             max-width: 1366px; margin: 0 auto;
-            background: #005A36;
+            background: #0f3d2a;
             z-index: 990;
             box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
         }
         .footer-nav {
             display: flex; justify-content: space-around; align-items: center; height: 65px;
-            max-width: 600px; margin: 0 auto; /* จำกัดเมนูด้านล่างไม่ให้ยืดห่างกันเกินไปในคอม */
+            max-width: 600px; margin: 0 auto;
         }
         .nav-item {
-            flex: 1; text-align: center; color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 600; cursor: pointer;
+            flex: 1; text-align: center; color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 600; cursor: pointer;
             height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
         }
         .nav-item span { font-size: 20px; }
-        .nav-item.active { color: #ffffff; font-weight: 700; background: rgba(255,255,255,0.1); }
+        .nav-item.active { color: #ffffff; font-weight: 700; background: rgba(255,255,255,0.12); }
         
         #navAdminOnly { display: none; color: #fde047; }
         .nav-logout { color: #fecdd3; }
@@ -217,20 +230,19 @@
         ---------------------------------------------------- */
         .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: white; width: 100%; max-width: 360px; padding: 24px; border-radius: 24px; }
-        .modal-title { font-size: 16px; font-weight: 800; color: #005A36; margin-bottom: 16px; text-align: center; }
+        .modal-title { font-size: 16px; font-weight: 800; color: #0f3d2a; margin-bottom: 16px; text-align: center; }
         .modal-buttons { display: flex; gap: 10px; margin-top: 10px; }
         .btn-modal { flex: 1; height: 48px; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; }
-        .btn-confirm { background: #005A36; color: white; }
+        .btn-confirm { background: #0f3d2a; color: white; }
         .btn-cancel { background: #e2e8f0; color: #475569; }
 
         /* ====================================================
-            📱 MEDIA QUERIES: จุดเปลี่ยนร่างสลับโหมดอัตโนมัติ (จอเล็กกว่า 900px)
+            📱 MEDIA QUERIES: จุดเปลี่ยนร่างสลับโหมดอัตโนมัติเมื่ออยู่บนมือถือ
            ==================================================== */
         @media (max-width: 900px) {
             .header { padding: 12px 16px; }
             .main { padding: 85px 12px 95px 12px; }
             
-            /* สลับกลับมาเป็นแถวเดี่ยวแนวตั้งแบบแอปมือถือที่คุณดี้ลชอบ */
             .department-grid { 
                 grid-template-columns: 1fr; 
                 gap: 12px;
@@ -240,7 +252,7 @@
                 gap: 12px;
             }
             .dept-card { padding: 14px; gap: 10px; }
-            .action-btn-mini { height: 48px; font-size: 15px; } /* ขยายปุ่มให้ใหญ่ขึ้นในมือถือ */
+            .action-btn-mini { height: 48px; font-size: 15px; } 
             .dash-card { display: flex; justify-content: space-between; align-items: center; text-align: left; padding: 16px; }
             .dash-card-value { margin-top: 0; font-size: 26px; }
         }
@@ -250,10 +262,11 @@
 
 <div class="container">
 
+    <!-- LOGIN SCREEN -->
     <div id="loginScreen">
         <div class="login-box">
             <div class="login-brand">
-                <img src="https://lh3.googleusercontent.com/d/183x5AcfnwjAVsiM-LSS3YTfZE2iEX2ls" alt="Operator Logo" class="login-logo-img">
+                <img src="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz" alt="Operator Logo" class="login-logo-img">
                 <div class="login-title">PHONE HUB</div>
             </div>
             <div class="login-subtitle">หน่วย Operator | Phyathai Nawamin</div>
@@ -281,9 +294,11 @@
         </div>
     </div>
 
+    <!-- FIXED APP HEADER -->
     <div class="header">
         <div class="logo-zone">
-            <img src="https://lh3.googleusercontent.com/d/183x5AcfnwjAVsiM-LSS3YTfZE2iEX2ls" alt="Operator Logo" class="header-logo-img">
+            <!-- แสดงผลรูปไอคอนที่คุณดี้ลส่งมาในกรอบวงกลมสวย ๆ บน Title bar ค่ะ -->
+            <img src="https://drive.google.com/uc?export=view&id=1HfIIw2Ci4tP-HdT7lLsCrDNGgV0Qpllz" alt="Operator Logo" class="header-logo-img">
             <div class="header-title-box">
                 <div class="header-program-name">PHONE HUB</div>
                 <div class="user-tag" id="currentUserTag">เจ้าหน้าที่: -</div>
@@ -295,6 +310,7 @@
         </div>
     </div>
 
+    <!-- MAIN AREA CONTENT -->
     <div class="main">
         <div id="screenHome" class="app-screen active">
             <div id="floorContainer"></div>
@@ -321,6 +337,7 @@
         </div>
     </div>
 
+    <!-- FIXED FOOTER BAR -->
     <div class="footer-container">
         <div class="footer-nav">
             <div class="nav-item active" id="navHome" onclick="switchScreen('home')">
@@ -341,6 +358,7 @@
         </div>
     </div>
 
+    <!-- POPUP MODAL -->
     <div class="modal" id="addDeptModal">
         <div class="modal-content">
             <div class="modal-title">👑 เพิ่มหน่วยงานใหม่ (สิทธิ์หัวหน้า)</div>
